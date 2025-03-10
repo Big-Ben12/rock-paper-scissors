@@ -1,7 +1,3 @@
-// Scores
-let humanScore = 0;
-let computerScore = 0;
-
 // Get Computer choice
 function getComputerChoice() {
     const randomNum = Math.floor(Math.random() * 3);
@@ -21,22 +17,41 @@ function getComputerChoice() {
     console.log(choice);
     return choice;
 }
-getComputerChoice();
+
 
 // Get human choice
 function getHumanChoice() {
     let choice = prompt("Please enter your choice: ");
     console.log(choice);
     return choice;
-    
 }
-getHumanChoice();
+
+
+// Scores
+let humanScore = 0;
+let computerScore = 0;
 
 // Play round
 function playRound (humanChoice, computerChoice){
+    humanChoice = humanChoice.toLowerCase();
+    if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ){
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
+        console.log("Human score is: ", humanScore);
+
+    } else {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
+        console.log("Computer score is: ", computerScore++);
+    }
 
 }
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection)
+
